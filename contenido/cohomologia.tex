@@ -1,0 +1,30 @@
+\section{Cohomología}
+
+\begin{definition}
+	Un \textbf{complejo de cadenas} $\{ C_{\bullet}, \partial_{\bullet} \}$ es una sequencia de homomorfismos de grupos abelianos libres ($\Z$-módulos libres)
+	\[ \cdots \rightarrow C_{n+1} \xrightarrow{\partial_{n+1}} C_{n} \xrightarrow{\partial_{n}} C_{n-1} \rightarrow \cdots \rightarrow C_{1} \xrightarrow{\partial_{1}} C_{0} \rightarrow 0, \]
+	donde $\partial_{n} \partial_{n+1} = 0$ para cada $n$. A estos mapas $\partial_{i}$ los llamamos \textbf{mapas de borde}.
+\end{definition}
+
+\begin{example}
+	El principal complejo de cadenas con el que trabajaremos es aquel que llamaremos el \textbf{complejo de co-cadenas}, que se obtiene al dualizar un complejo de cadenas como el anterior por un grupo abeliano $G$:
+	\[ \cdots \leftarrow C^{*}_{n+1} \xleftarrow{\delta^{n+1}} C^{*}_{n} \xleftarrow{\delta^{n}} C^{*}_{n-1} \leftarrow \cdots \leftarrow C^{*}_{1} \xleftarrow{\delta^{1}} C^{*}_{0} \leftarrow 0, \]
+	donde $C_{i}^{*} = \Hom(C_{i}, G)$ y $\delta^{n} = \partial_{n}^{*} \colon C_{n-1}^{*} \to C_{n}^{*}$. Los mapas $\partial_{i}^{*}$ son los mapas duales a los $\partial_{i}$ y los llamamos \textbf{mapas de co-borde}. Denotamos por $\{ C^{\bullet}, \delta^{\bullet} \}$ a este nuevo complejo.
+\end{example}
+
+\begin{definition}
+	Dado un complejo de cadenas $\{ C_{\bullet},\partial_{\bullet} \}$, definimos el $i$\textbf{-ésimo grupo de homología} asociado a este complejo como
+	\[ H_{i}(C) = \frac{\ker \partial_{n}}{\im \partial_{n+1}}. \]
+	Por otro lado, si tomamos el complejo de co-cadenas asociado $\{ C^{\bullet}, \delta^{\bullet} \}$, podemos definimos el $i$\textbf{-ésimo grupo de cohomología} como la homología de este nuevo complejo; es decir,
+	\[ H^{i}(C; G) = \frac{\ker \delta^{n}}{\im \delta^{n-1}}. \]
+\end{definition}
+
+El siguiente teorema nos permite afirmar que $H^{n}(C;G)$ está completamente determinado por $G$ y por los grupos de homología $H_{n}(C)$.
+
+\begin{theorem}
+	Dado un complejo de cadenas $\{ C_{\bullet}, \partial_{\bullet} \}$, tenemos que sus grupos de cohomología $H^{n}(C;G)$ están determinados por sequencias exactas cortas que se escinden:
+	\[ 0 \to \Ext(H_{n-1}(C), G) \to H^{n}(C; G) \xrightarrow{h} \Hom(H_{n}(C), G) \to 0. \]
+\end{theorem}
+
+Si bien no estamos completamente interesados en la demostración, vale la pena hacer unos comentarios sobre el mapa $h$ que se menciona en el teorema.
+

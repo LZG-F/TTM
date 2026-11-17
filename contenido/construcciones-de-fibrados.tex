@@ -1,3 +1,4 @@
+\newpage
 \section{Construcciones de Fibrados Vectoriales a Partir de Otros}
 
 \cite[\S 3]{ClasesCaracteristicas}.
@@ -79,4 +80,63 @@ el encaje sobre la diagonal. El fibrado inducido $\Delta^{*}(\xi_{1} \times \xi_
 
 \subsection{Complementos Ortogonales}
 
-\subsection{Funtor $\Hom$}
+A partir de este lemma, es natural preguntarse si, dado un sub-fibrado $\xi \subset \eta$, ¿existe otro sub-fibrado tal que $\eta$ se separa en una suma de Whitney de estos sub-fibrados? Para responder a esto, y tal como se sugirió al final de la sección anterior, nos reduciremos a los fibrados que poseen una métrica Euclidiana. \par
+
+Sea $\eta$ un fibrado vectorial Euclidiano. Definimos $F_{b}(\xi^{\perp})$ como el subespacio de $F_{b}(\eta)$ que consiste de los vectores $v$ que cumplen $v \cdot w = 0$ para todo $w \in F_{b}(\xi)$. Sea $E(\xi^{\perp}) \subset E(\eta)$ la unión de los $F_{b}(\xi^{\perp})$.
+
+\begin{definition}
+	$\xi^{\perp}$ será llamado el \textbf{complemento ortogonal} de $\xi$ en $\eta$.
+\end{definition}
+
+\begin{theorem}
+	$E(\xi^{\perp})$ es el espacio total de un sub-fibrado $\xi^{\perp} \subset \eta$. Aún más, $\eta$ es isomorfo a la suma de Whitney $\xi \oplus \xi^{\perp}$.
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}
+
+\subsection{El Funtor $\Hom$}
+
+Es posible construir nuevos espacios vectoriales de muchas formas a partir de otros. Si bien nos centraremos principalmente en el funtor $\Hom$, pues nos será de utilidad para ejemplificar el cálculo de clses de Stiefel-Whitney en ciertos fibrados, introduciremos una forma general de construir fibrados a partir de dos fibrados distintos.
+
+\begin{definition}
+	Denotemos por $\Vect_{\R}$ a la categoría de espacios vectoriales reales finito dimensionales y de isomorfismos entre ellos. Un \textbf{funtor} (covariante) $T \colon \Vect_{\R} \times \Vect_{\R} \to \Vect_{\R}$ es una operación que asigna
+	\begin{itemize}
+		\item[1.] a cada par $V,W \in \Vect_{\R}$ de espacios vectoriales, un espacio vectorial $T(V,W) \in \Vect_{\R}$;
+
+		\item[2.] a cada par $f \colon V \to V',\, g \colon W \to W'$ de isomorfismos, un isomorfismo
+		\[ T(f,g) \colon T(V,W) \to T(V',W') \]
+		tal que
+
+		\item[3.] $T(\id_{V}, \id_{W}) = \id_{T(V,W)}$ y
+
+		\item[4.] $T(f_{1} \circ f_{2}, g_{1} \circ g_{2}) = T(f_{1}, g_{1}) \circ T(f_{2},g_{2})$.
+	\end{itemize}
+	Tal funtor será llamado \textbf{continuo} si $T(f,g)$ depende continuamente de $f$ y $g$. Esto tiene sentido, pues el conjunto de todos los isomorfismos de un espacio vectorial hacia otro tiene una topología natural.
+\end{definition}
+
+Es posible extender esta definición de funtores continuos a más variables $T : \Vect_{\R} \times \cdots \times \Vect_{\R} \to \Vect_{\R}$ de manera similar. Nosotros nos restringimos al caso en que tenemos sólo dos variables. \par
+Ahora, sea $T : \Vect_{\R} \times \Vect_{\R} \to \Vect_{\R}$ un funtor continuo, y sean $\xi_{1},\xi_{2}$ fibrados vectoriales sobre un mismo espacio base $B$. El nuevo fibrado vectorial se construye de la siguiente manera. Para cada $b \in B$, sea
+\[ F_{b} = T(F_{b}(\xi_{1}), F_{b}(\xi_{2})). \]
+Denotamos por $E$ a la unión disjunta de los espacios vectoriales $F_{b}$ y definimos $\pi \colon E \to B$ por $\pi(F_{b}) = b$. \par
+
+Si bien en el contexto de este informe no estamos completamente interesados en la demostración del siguiente teorema, sigue siendo algo importante a mencionar para que la construcción anterior tenga sentido.
+
+\begin{theorem}
+	Existe una topología canónica para $E$ de tal manera que $E$ es el espacio total de un fibrado vectorial con proyección $\pi$ y fibras $F_{b}$.
+\end{theorem}
+
+\begin{definition}
+	Este fibrado será denotado por $T(\xi_{1},\xi_{2})$.
+\end{definition}
+
+En particular, recordemos que $\Hom(V,W)$ es el espacio vectorial de todas las transformaciones lineales entre $V$ y $W$. En efecto, $\Hom : \Vect_{\R} \times \Vect_{\R} \to \Vect_{\R}$ es un funtor continuo, por lo que podemos construir nuevos fibrados vectoriales, y lo denotaremos por $\Hom(\xi_{1},\xi_{2})$. Notemos que, en este caso, cada fibra representará el espacio de transformaciones lineales entre las fibras $F_{b}(\xi_{1})$ y $F_{b}(\xi_{2})$. \par
+
+Una herramienta que nos será de utilidad durante en una sección próxima es el siguiente lemma.
+
+\begin{lemma}
+	Si un fibrado vectorial $\xi$ posee una métrica Euclidiana, entonces $\xi$ es isomorfo al fibrado $\Hom(\xi, \epsilon^{1})$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}

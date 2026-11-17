@@ -1,7 +1,44 @@
+\newpage
 \section{Clases de Stiefel-Whitney}
 
 \cite[\S 4]{ClasesCaracteristicas}.
 
+Damos inicio a esta sección introduciendo los axiomas que caracterizan a las clases de Stiefel-Whitney. Es posible establecer tanto existencia como unicidad de las clases de cohomología que satisfacen estos axiomas, y aunque es algo que complementaría de buena forma a este informe, no es algo que trabajaremos durante el mismo. Para tal exposición, referirse a las secciones 7 y 8 de \cite{ClasesCaracteristicas}. Durante esta sección, asumimos estos hechos.
+
 \begin{axiom}
-	a
+	A cada fibrado vectorial $\xi$ le corresponde una secuencia de clases de cohomología
+	\[ w_{i}(\xi) \in H^{i}(B(\xi); \Z \slash 2\Z), \quad i = 0,1,2,\dots \]
+	llamadas las \textbf{clases de Stiefel-Whitney de $\xi$}. La clase $w_{0}(\xi)$ es igual a la unidad
+	\[ 1 \in H^{0}(B(\xi); \Z \slash 2\Z), \]
+	y $w_{i}(\xi)$ es igual a cero para $i > n$ si $\xi$ es un fibrado de $n$-planos.
 \end{axiom}
+
+\begin{axiom}[Naturalidad]
+	Si $f \colon B(\xi) \to B(\eta)$ está cubierto por un mapa de fibrados de $\xi$ a $\eta$, entonces
+	\[ w_{i}(\xi) = f^{*}w_{i}(\eta). \]
+\end{axiom}
+
+\begin{axiom}[Teorema del Producto de Whitney]
+	Si $\xi$ y $\eta$ son fibrados sobre un mismo espacio base, entonces 
+	\[ w_{k}(\xi \oplus \eta) = \sum_{i=0}^{k} w_{i}(\xi) \smile w_{k-i}(\eta). \]
+\end{axiom}
+
+\begin{axiom}
+	Para el fibrado de linea $\gamma_{1}^{1}$ sobre $\P^{1}$, la clase de Stiefel-Whitney $w_{1}(\gamma_{1}^{1})$ es no nula.
+\end{axiom}
+
+Notemos que el axioma 2 puede ser reescrito de la siguiente manera
+\[ w_{i}(f^{*}\eta) = f^{*}w_{i}(\eta), \]
+donde, por un lado, $f^{*}$ representa el fibrado inducido por $f$ y, por otro, el mapa inducido en cohomología. En cierto sentido, estamos estableciendo que las clases conmutan con los pullback's en los contextos apropiados. \par
+
+Por otro lado, y a modo de ejemplificar el comportamiento dado por el axioma 3, notar que
+\begin{align*}
+	w_{1}(\xi \oplus \eta) &= w_{1}(\xi) + w_{1}(\eta) \\
+	w_{2}(\xi \oplus \eta) &= w_{2}(\xi) + w_{1}(\xi)w_{1}(\eta) + w_{2}(\eta) \\
+	w_{3}(\xi \oplus \eta) &= w_{3}(\xi) + w_{2}(\xi)w_{1}(\eta) + w_{1}(\xi)w_{2}(\eta) + w_{3}(\eta).
+\end{align*}
+Tal como en el ejemplo, normalmente omitiremos el uso del símbolo $\smile$ para el producto cup.
+
+\subsection{Consecuencias de los Axiomas}
+
+

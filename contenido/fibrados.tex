@@ -1,3 +1,4 @@
+\newpage
 \section{Fibrados Vectoriales}
 
 \cite[\S 2]{ClasesCaracteristicas}.
@@ -112,3 +113,33 @@ Ahora, consideremos una colección $\{ s_{1}, \dots, s_{n} \}$ de secciones cruz
 	1.8...
 \end{proof}
 
+\subsection{Fibrados Vectoriales Euclidianos}
+
+Para cerrar esta sección, introducimos de manera breve los fibrados vectoriales Euclidianos. En relación a este informe, la razón por la que es pertinente hablar de estos fibrados se verá en la siguiente sección, al hablar de complementos ortogonales dentro de fibrados vectoriales Euclidianos.
+
+\begin{definition}
+	Una función a valores reales $\mu$ definida sobre un espacio vectorial $V$ es \textbf{cuadrática} si se puede expresar de la siguiente manera
+	\[ \mu(v) = \sum_{i}l_{i}(v) l_{i}'(v), \]
+	donde cada $l_{i}$ y cada $l_{i}'$ es lineal.
+\end{definition}
+
+Cada función cuadrática determina un mapeo simétrico y bilineal $v,w \mapsto v \cdot w$ desde $V \times V$ a $R$, donde
+\[ v \cdot w = \frac{1}{2}(\mu(v + w) - \mu(v) - \mu(w)). \]
+Es importante notar que $v \cdot v = \mu(v)$. Decimos que una función cuadrática $\mu$ es \textbf{definida positiva} si $\mu(v) > 0$ para $v \neq 0$.
+
+\begin{definition}
+	Un \textbf{espacio vectorial Euclidiano} es un espacio vectorial real $V$ junto con una función cuadrática definida positiva
+	\[ \mu \colon V \to \R. \]
+	El número real $v \cdot w$ será llamado el \textbf{producto interno} de los vectores $v$ y $w$.
+\end{definition}
+
+\begin{definition}
+	Un \textbf{fibrado vectorial Euclidiano} es un fibrado vectorial real $\xi$ junto con una función continua
+	\[ \mu \colon E(\xi) \to \R, \]
+	tal que la restricción de $\mu$ a cada fibra de $\xi$ es definida postiva y cuadrática. En tal caso, la función $\mu$ es llamada una \textbf{métrica Euclidiana} sobre el fibrado vectorial $\xi$.
+\end{definition}
+
+\begin{example}
+	Al fibrado trivial $\epsilon_{B}^{n}$ le podemos dar la métrica Euclidiana
+	\[ \mu(b,x) = x_{1}^{2} + \cdots + x_{n}^{2}. \]
+\end{example}

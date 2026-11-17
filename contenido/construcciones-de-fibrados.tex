@@ -1,0 +1,82 @@
+\section{Construcciones de Fibrados Vectoriales a Partir de Otros}
+
+\cite[\S 3]{ClasesCaracteristicas}.
+
+\subsection{Restricción de fibrados}
+
+\subsection{Fibrados Inducidos}
+
+Sea $\xi$ un fibrado sobre $B$, y sea $B_{1}$ un espacio topológico arbitrario. Dado un mapa $f \colon B_{1} \to B$ cualquiera, podemos construir el fibrado inducido $f^{*} \xi$ sobre $B_{1}$. El espacio total $E_{1}$ de $f^{*} \xi$ es el subconjunto $E_{1} \subset B_{1} \times E$, que consiste de todos los pares $(b,e)$, con
+\[ f(b) = \pi(e). \]
+El mapa de proyección $\pi_{1} \colon E_{1} \to B_{1}$ se define por $\pi_{1}(b,e) = b$. Luego, tenemos un diagrama conmutativo
+\[ \begin{tikzcd}
+E_1 \arrow[r, "\hat{f}", xshift=-2pt] \arrow[d, "\pi_1"', xshift=-4pt]      & E \arrow[d, "\pi", xshift=-4pt] \\
+B_1 \arrow[r, "f"{xshift=-4pt}, shorten <=-4pt, shorten >=4pt, xshift=-2pt] & B
+\end{tikzcd} \]
+donde $\hat{f}(b,e) = e$. La estructura de espacio vectorial en $\pi_{1}^{-1}(b)$ está definida por
+\[ t_{1}(b,e_{1}) + t_{2}(b,e_{2}) = (b, t_{1}e_{1} + t_{2}e_{2}). \]
+Notemos que, con esta estructura, se da el caso que $e_{1},e_{2} \in E$ pertenecen a la misma fibra en $\xi$, dado que el diagrama anterior conmuta. Luego, no es dificil ver que $\hat{f}$ envía el espacio vectorial $F_{b}(f^{*}\xi)$ al espacio vectorial $F_{f(b)}(\xi)$ de manera isomorfa. \par
+Para asegurarnos de que esta construcción nos está dando, en efecto, un nuevo fibrado vectorial, debemos verificar que se cumple la condición de trivialización local. Es decir, si $(U,h)$ es un sistema de coordenadas locales para $\xi$, definimos $U_{1} = f^{-1}(U)$ y
+\[ h_{1} \colon U_{1} \times \R^{n} \to \pi_{1}^{-1}(U_{1}), \]
+de tal manera que $h_{1}(b,x) = (b, h(f(b), x))$.
+%Aún no estoy seguro de si quiero dejar esto en un lemma o continuar explicando de manera natural. Supongo que esto va a depender de si mi demostración se extiende mucho o no.
+\begin{lemma}
+	$(U_{1}, h_{1})$ es un sistema de coordenadas locales para $f^{*}\xi$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Es importante notar que si $\xi$ es trivial, entonces $f^{*}\xi$ también lo será. \par
+El anterior diagrama conmutativo sugiere el siguiente concepto que, a priori, es más general. El lemma que vendrá luego dejará en claro por qué esto es sólo \textit{a priori}.
+
+\begin{definition}
+	Sean $\xi$ y $\eta$ fibrados vectoriales. Un \textbf{mapa de fibrados} desde $\xi$ a $\eta$ es una función continua
+	\[ g \colon E(\xi) \to E(\eta), \]
+	tal que envía cada espacio vectorial $F_{b}(\xi)$ hacia un espacio vectorial $F_{b'}(\eta)$ de manera isomorfa.
+\end{definition}
+
+Definiendo $\bar{g}(b) = b'$, es claro que la función resultante
+\[ \bar{g} \colon B(\xi) \to B(\eta), \]
+es continua.
+
+\begin{lemma}
+	Si $g \colon E(\xi) \to E(\eta)$ es un mapa de fibrados, con $\bar{g}$ su mapa correspondiente entre espacios bases, entonces $\eta$ es isomorfo al fibrado inducido $\bar{g}^{*}\xi$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+\subsection{Productos Cartesianos}
+
+Sean $\xi_{1},\xi_{2}$ fibrados con mapas de proyección $\pi_{i} \colon E_{i} \to B_{i}$, $i=1,2$, respectivamente. El \textbf{producto cartesiano} $\xi_{1} \times \xi_{2}$ está definido como el fibrado con mapa de proyección
+\[ \pi_{1} \times \pi_{2} \colon E_{1} \times E_{2} \to B_{1} \times B_{2}, \]
+donde a cada fibra
+\[ (\pi_{1} \times \pi_{2})^{-1}(b_{1},b_{2}) = F_{b_{1}}(\xi_{1}) \times F_{b_{2}}(\xi_{2}) \]
+le es dada la estructura de espacio vectorial obvia.
+
+% Acá, debería considerar una de dos, o demostrar la afirmación de ejemplo, o simplemente quitarlo.
+\begin{example}
+	Dadas dos variedades diferenciables $M_{1},M_{2}$, consideremos sus respectivos fibrados tangentes $\tau_{M_{1}}, \tau_{M_{2}}$. Tomando el producto cartesiano, obtenemos el fibrado $\tau_{M_{1}} \times \tau_{M_{2}}$. Luego, si consideramos el fibrado tangente $\tau_{M}$ de la variedad diferenciable $M = M_{1} \times M_{2}$, entonces es posible demostrar que este fibrado es isomorfo a $\tau_{M_{1}} \times \tau_{M_{2}}$.
+\end{example}
+
+\subsection{Sumas de Whitney}
+
+Consideremos dos fibrados $\xi_{1}, \xi_{2}$ sobre el mismo espacio base $B$. Sea
+\[ \Delta \colon B \to B \times B \]
+el encaje sobre la diagonal. El fibrado inducido $\Delta^{*}(\xi_{1} \times \xi_{2})$ sobre $B$ es llamado la \textbf{suma de Whitney}, y será denotado por $\xi_{1} \oplus \xi_{2}$. Es posible notar que cada fibra $F_{b}(\xi_{1} \oplus \xi_{2})$ es canónicamente isomorfa a la suma directa $F_{b}(\xi_{1}) \oplus F_{b}(\xi_{2})$.
+
+\begin{definition}
+	Consideremos dos fibrados $\xi$ y $\eta$ sobre el mismo espacio base, con $E(\xi) \subset E(\eta)$. Decimos que $\xi$ es un \textbf{sub-fibrado} de $\eta$ si cada fibra $F_{b}(\xi)$ es un subespacio vectorial del correspondiente fibrado $F_{b}(\eta)$. En tal caso escribimos $\xi \subset \eta$.
+\end{definition}
+
+\begin{lemma}
+	Sean $\xi_{1}$ y $\xi_{2}$ sub-fibrados de $\eta$, tales que cada espacio vectorial $F_{b}(\eta)$ es igual a la suma directa de espacios vectoriales $F_{b}(\xi_{1}) \oplus F_{b}(\xi_{2})$. Entones, $\eta$ es isomorfo a la suma de Whitney $\xi_{1} \oplus \xi_{2}$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+\subsection{Complementos Ortogonales}
+
+\subsection{Funtor $\Hom$}

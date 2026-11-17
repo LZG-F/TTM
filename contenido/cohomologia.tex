@@ -1,5 +1,7 @@
 \section{Cohomología}
 
+\cite[\S 2]{HatcherAlgTop}.
+
 \begin{definition}
 	Un \textbf{complejo de cadenas} $\{ C_{\bullet}, \partial_{\bullet} \}$ es una sequencia de homomorfismos de grupos abelianos libres ($\Z$-módulos libres)
 	\[ \cdots \rightarrow C_{n+1} \xrightarrow{\partial_{n+1}} C_{n} \xrightarrow{\partial_{n}} C_{n-1} \rightarrow \cdots \rightarrow C_{1} \xrightarrow{\partial_{1}} C_{0} \rightarrow 0, \]
@@ -21,10 +23,11 @@
 
 El siguiente teorema nos permite afirmar que $H^{n}(C;G)$ está completamente determinado por $G$ y por los grupos de homología $H_{n}(C)$.
 
-\begin{theorem}
-	Dado un complejo de cadenas $\{ C_{\bullet}, \partial_{\bullet} \}$, tenemos que sus grupos de cohomología $H^{n}(C;G)$ están determinados por sequencias exactas cortas que se escinden:
+\begin{theorem}[de Coeficientes Universales]
+	Dado un complejo de cadenas $\{ C_{\bullet}, \partial_{\bullet} \}$, sus grupos de cohomología $H^{n}(C;G)$ están determinados por sequencias exactas cortas que se escinden:
 	\[ 0 \to \Ext(H_{n-1}(C), G) \to H^{n}(C; G) \xrightarrow{h} \Hom(H_{n}(C), G) \to 0. \]
 \end{theorem}
 
 Si bien no estamos completamente interesados en la demostración, vale la pena hacer unos comentarios sobre el mapa $h$ que se menciona en el teorema.
 
+\subsection{Producto Cup}

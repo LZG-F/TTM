@@ -1,1 +1,114 @@
-\section{}
+\section{Fibrados Vectoriales}
+
+\cite[\S 2]{ClasesCaracteristicas}.
+
+\begin{definition}
+	Sea $B$ un espacio topológico, que llamaremos \textbf{espacio base}. Un \textbf{fibrado vectorial real} $\xi$ sobre $B$ consiste de:
+	\begin{itemize}
+		\item[1)] Un espacio topológico $E = E(\xi)$ llamado el \textbf{espacio total}.
+
+		\item[2)] Un mapa continuo $\pi \colon E \to B$ llamado el \textbf{mapa de proyección}.
+
+		\item[3)] Para cada $b \in B$, una estructura de espacio vectorial real en el conjunto $\pi^{-1}(b)$.
+	\end{itemize}
+	Además, deben cumplir una condición de \textbf{trivialización local}. Para cada punto $p \in B$, debe existir una vecindad $U \subset B$, un entero $n \geq 0$, y un homeomorfismo $h \colon U \times R^{n} \to \pi^{-1}(U)$ tal que, para cada $b \in U$, la correspondencia $x \mapsto h(b,x)$ define un isomorfismo entre espacios vectoriales $\{ b \} \times \R^{n} \cong \pi^{-1}(b)$. \par
+\end{definition}
+
+El par $(U,h)$ será llamado un \textbf{sistema de coordenadas locales para $\xi$ en $b$}. En caso de poder escoger $U = B$, diremos que $\xi$ es un \textbf{fibrado trivial}. \par
+El espacio vectorial $\pi^{-1}(b)$ es llamado una \textbf{fibra sobre $b$}. A este espacio lo denotaremos por $F_{b}(\xi)$, o simplemente $F_{b}$. La función $\dim \colon B \to \N$ que entrega la dimensión $n$ de las fibras $F_{b}$ es una función localmente constante, aunque en la mayoría de los casos, esta función será constante globalmente. En tal caso, hablamos de \textbf{fibrado de $n$-planos}, o simplemente un \textbf{$n$-fibrado}. En el caso que $n = 1$ hablamos de \textbf{fibrado de lineas}.
+
+\begin{definition}
+	Sean $\xi$ y $\eta$ fibrados vectoriales sobre el mismo espacio $B$. Decimos que \textbf{$\xi$ es isomorfo a $\eta$}, o $\xi \cong \eta$, si existe un homeomorfismo
+	\[ f \colon E(\xi) \to E(\eta) \]
+	entre espacios totales, tal que mapea cada espacio vectorial $F_{b}(\xi)$ de manera isomorfa hacia el espacio vectorial $F_{b}(\xi)$.
+\end{definition}
+
+%%% Es importante notar que en esta definición se necesita que $f$ se restrinja a al identidad sobre el espacio base.
+
+En lo restante de este documento, vamos a utilizar los siguientes ejemplos de fibrados vectoriales en demasía.
+
+\begin{example}
+	El \textbf{fibrado trivial}, con espacio total $B \times \R^{n}$, mapa de proyección $\pi(b,x) = b$, y estructura de espacio vectorial sobre las fibras dado por
+	\[ t_{1}(b,x_{1}) + t_{2}(b,x_{2}) = (b, t_{1}x_{1} + t_{2}x_{2}). \]
+	Este fibrado será denotado por $\varepsilon_{B}^{n}$, o siplemente $\varepsilon^{n}$ cuando el espacio base se de por entendido. Notemos que un fibrado de $n$ planos es trivial si y solo si es isomorfo a $\varepsilon^{n}$.
+\end{example}
+
+\begin{example}
+	El \textbf{fibrado tangente} $\tau_{M}$, asociado a una variedad suave $M$. El espacio total de $\tau_{M}$ es la variedad $\mathbf{T}M$ que consiste en todos los pares $(x,v)$, donde $x \in M$ y $v$ es tangente a $M$ en $x$. El mapa de proyección $\pi \colon \mathbf{T}M \to M$ está dado por $\pi(x,v) = x$. Por último, la estructura de espacio vectorial sobre las fibras está dada por
+	\[ t_{1}(x,v_{1}) + t_{2}(x,v_{2}) = (x, t_{1}v_{1} + t_{2}v_{2}). \]
+	En caso que $\tau_{M}$ sea un fibrado trivial, decimos que $M$ es \textbf{paralelizable}. \par
+	% DAR EJEMPLOS DE PARALELIZABLES Y NO PARALELIzABLES %
+\end{example}
+
+\begin{example}
+	El \textbf{fibrado normal} $\nu_{M}$, asociado a una variedad suave $M \subset \R^{n}$ se obtiene de la siguiente manera. El espacio total $E \subset M \times \R^{n}$, consiste del conjunto de todos los pares $(x,v)$ tales que $v$ es ortogonal al espacio tangente $\mathbf{T}_{x}M$. El mapa de proyección $\pi \colon E \to M$ está dado por $\pi(x,v) = x$, y la estructura de espacio vectorial sobre $\pi^{-1}(x)$ está dada por
+	\[ t_{1}(x,v_{1}) + t_{2}(x,v_{2}) = (x, t_{1}v_{1} + t_{2}v_{2}). \]
+\end{example}
+
+% NO ESTOY SEGURO DE SI DEBO DEFINIR EL ESPACIO PROYECTIVO ACÁ O ANTES %
+\begin{example}
+	Al espacio proyectivo $\P^{n}$, le podemos asociar un fibrado $\gamma_{n}^{1}$, que construimos de la siguiente manera. Sea $E(\gamma_{n}^{1}) \subset \P^{n} \times \R^{n+1}$, tal que consiste de todos los pares $(\{ \pm x \}, v)$ donde el vector $v$ es un múltiplo de $x$. Definimos el mapa de proyección $\pi \colon E(\gamma_{n}^{1}) \to \P^{n}$ por $\pi(\{ \pm x \}, v) = \{ \pm x \}$. Luego, cada fibra $\pi(\{ \pm x \})$ puede ser identificada con la línea que pasa por $x$ y $-x$ en $\R^{n+1}$. La estructura de espacio vectorial es clara. El fibrado vectorial resultante $\gamma_{n}^{1}$ será llamado el \textbf{fibrado tautológico} sobre $\P^{n}$.
+\end{example}
+
+Es importante notar que en cada uno de estos ejemplos es necesario demostrar que cumplen la condición de trivialización local, pues solo así podremos afirmar que, en efecto, estos son ejemplos apropiados de fibrados vectoriales. Con tal de ilustrar uno de los casos, veamos que el fibrado tautológico cumple esta condición.
+%%% , que será por cierto, el fibrado con mayor protagonismo en lo que se expondrá posteriormente.
+
+\begin{lemma}
+	$\gamma_{n}^{1}$ es localmente trivial.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Además, nos interesa el hecho de que $\gamma_{n}^{1}$ no es un fibrado trivial. Para poder ver esto, introducimos la noción de secciones cruzadas.
+
+\begin{definition}
+	Una \textbf{sección cruzada} sobre un fibrado vectorial $\xi$ con espacio base $B$ es una función continua $s \colon B \to E(\xi)$ que asigna a cada punto $b \in B$ un elemento en su fibra correspondiente $F_{b}(\xi)$. Decimos que una sección cruzada \textbf{no nula} si $s(b)$ es un vector no nulo de $F_{b}(\xi)$ para todo $b \in B$.
+\end{definition}
+
+% ¿es "nunca se desvanece" la mejor traducción?, quizá es mejor poner "no nula". %
+
+% en caso que B = M, una sección cruzada del fibrado tangente es llamada un campo vectorial
+
+\begin{lemma}
+	Un fibrado de lineas trivial debe poseer una sección cruzada no nula.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+\begin{lemma}
+	El fibrado $\gamma_{n}^{1}$ sobre $\P^{n}$ es no trivial para $n \geq 1$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Analicemos el espacio total $E(\gamma_{n}^{1})$ cuando $n = 1$. No es solo que este espacio sea interesante por sí solo, sino que nos será de utilidad más adelante para ilustrar ciertas cosas.
+
+\[ \ldots \]
+
+Ahora, consideremos una colección $\{ s_{1}, \dots, s_{n} \}$ de secciones cruzadas sobre un fibrado vectorial $\xi$.
+
+\begin{definition}
+	Las secciones $s_{1},\dots,s_{n}$ \textbf{linealmente independientes} si, para cada $b \in B$, los vectores $s_{1}(b), \dots, s_{n}(b)$ son linealmente independientes.
+\end{definition}
+
+% En el libro, en vez de "linealmente independiente", aparece "nowhere dependent" %
+
+\begin{theorem}
+	Un fibrado de $n$-planos $\xi$ es trivial si y solo si admite $n$ secciones cruzadas $s_{1},\dots,s_{n}$ linealmente independientes.
+\end{theorem}
+
+\begin{lemma}
+	Sean $\xi$ y $\eta$ fibrados sobre un mismo espacio $B$, y sea $f \colon E(\xi) \to E(\eta)$ una función continua que mapea cada espacio vectorial $F_{b}(\xi)$ de manera isomorfa hacia el espacio vectorial correspondiente $F_{b}(\eta)$. Entonces, $f$ es necesariamente un homeomorfismo. Por lo tanto, $\xi$ es isomorfo a $\eta$.
+\end{lemma}
+
+\begin{proof}
+	1.9...
+\end{proof}
+
+\begin{proof}
+	1.8...
+\end{proof}
+

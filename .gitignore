@@ -7,4 +7,6 @@
 *.toc
 *.out
 *.latexmain
-
+*.bbl
+*.blg
+*.run.xml

@@ -1,16 +1,23 @@
 \documentclass[aop]{imsart2}
 
-\usepackage{amsmath}
+\input{preamble.tex}
+
+\usepackage{tikz}
+\usetikzlibrary{cd,babel}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Ext}{Ext}
-
-\input{preamble.tex}
 
 \begin{document}
 	\input{contenido/portada.tex}
 	\tableofcontents
 	\newpage
 
+	\input{contenido/variedades.tex}
+	\input{contenido/fibrados.tex}
+	\input{contenido/construcciones-de-fibrados.tex}
 	\input{contenido/cohomologia.tex}
+	\input{contenido/stiefel-whitney.tex}
+
+	\bibliography{referencias}
 \end{document}

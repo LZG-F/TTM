@@ -1,1 +1,67 @@
-\section{Variedades Diferenciales}
+\section{Variedades}
+
+\cite[\S 1, 5 y 8]{TuManifolds}
+
+\subsection{Variedades Topológicas}
+
+\begin{definition}
+	Un espacio topológico $M$ es \textbf{localmente Euclídeo de dimensión $n$} si cada punto $p$ en $M$ tiene una vecindad $U$ tal que existe un homeomorfismo $\phi$ desde $U$ hacia un abierto en $\R^{n}$. El par $(U,\phi \colon U \to \R^{n})$ es llamado una \textbf{carta}, $U$ un \textbf{abierto coordenado} y $\phi$ un \textbf{sistema de coordenadas} en $U$. Decimos que una carta $(U, \phi)$ está \textbf{centrado} en $p \in U$ si $\phi(p) = 0$.
+\end{definition}
+
+\begin{definition}
+	Una \textbf{variedad topológica} es un espacio topológico Hausdorff, segundo contable y localmente Euclídeo. Decimos que es de dimensión $n$ si es localmente Euclídeo de dimensión $n$.
+\end{definition}
+
+Notemos que para que la dimensión esté bien definida, necesitamos que para $n \neq m$, un abierto de $\R^{n}$ no es homeomorfo a un abierto de $\R^{m}$. Esto es llamado \textit{invarianza de dimensión} y, efectivamente, se cumple, pero no será algo que apuntaremos a demostrar en este texto.
+
+\subsection{Funciones Suaves}
+
+\subsection{Compatibilidad de Cartas}
+
+\begin{definition}
+	Decimos que dos cartas $(U,\phi)$ y $(V, \psi)$ de una variedad topológica son $C^{\infty}$\textbf{-compatibles} si los dos mapas
+	\[ \phi \circ \psi^{-1} \colon \psi(U \cap V) \to \phi(U \cap V), \quad \psi \circ \phi^{-1} \colon \phi(U \cap V) \to \psi(U \cap V) \]
+	son $C^{\infty}$. Estos dos mapas son llamados \textbf{mapas de transición} entre cartas. Si $U \cap V$ es vacío, entonces las cartas son automáticamente $C^{\infty}$-compatibles.
+\end{definition}
+
+Dado que solo nos interesarán las cartas $C^{\infty}$-compatibles, nos referiremos a ellas simplemente como cartas compatibles.
+
+\begin{definition}
+	Un \textbf{atlas} ($C^{\infty}$) en un espacio localmente Euclídeo $M$ es una colección $\mathfrak{U} = \{ (U_{\alpha}, \phi_{\alpha}) \}$ de cartas compatibles a pares tales que cubren $M$; i.e., tales que $M = \bigcup_{\alpha} U_{\alpha}$.
+\end{definition}
+
+% Estoy dudando en si debo poner esta definicion y lema que vinenen a continuacion.
+\begin{definition}
+	Decimos que una carta $(V, \psi)$ es \textbf{compatible con un atlas} $\{ (U_{\alpha}, \phi_{\alpha}) \}$ si es compatible con cada una de las cartas $(U_{\alpha}, \phi_{\alpha})$ en el atlas.
+\end{definition}
+
+\begin{lemma}
+	Sea $\{ (U_{\alpha}, \phi_{\alpha}) \}$ un atlas en un espacio localmente Euclídeo. Si dos cartas $(V, \psi)$ y $(W, \sigma)$ son compatibles con el atlas $\{ (U_{\alpha}, \phi_{\alpha}) \}$, entonces son compatibles entre sí.
+\end{lemma}
+
+\subsection{Variedades Diferenciables}
+
+\begin{definition}
+	Decimos que un atlas $\mathfrak{M}$ en un espacio localmente Euclídeo es \textbf{maximal} si no está contenido en un atlas más grande. Dicho de otra forma, si $\mathfrak{U}$ es cualquier otro atlas conteniendo a $\mathfrak{M}$, entonces $\mathfrak{U} = \mathfrak{M}$.
+\end{definition}
+
+\begin{definition}
+	Una \textbf{variedad diferenciable} es una variedad topológica $M$ junto con un atlas maximal. Llamamos a este atlas maximal una \textbf{estructura diferenciable} en $M$.
+\end{definition}
+
+Gracias al próximo lemma, bastará con encontrar un atlas no necesariamente maximal para asegurarnos que nuestra variedad posee una estructura diferenciable.
+
+\begin{lemma}
+	Cualquier atlas $\mathfrak{U}$ en un espacio localmente Euclídeo está contenido en un único atlas maximal.
+\end{lemma}
+
+\subsection{El Espacio Proyectivo}
+% Construir el espacio proyectivo mediante puntos antipodales en la esfera.
+% Mostrar que el mapa de proyección es abierto.
+% Mostrar que es variedad topológica (brevemente).
+% Construir su estructura diferenciable.
+
+% Estas dos subsecciones que siguen quizá tengan que ir en otra sección aparte.
+\subsection{El Espacio Tangente}
+
+\subsection{Inmersión vs Embedding}

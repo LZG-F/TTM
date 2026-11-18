@@ -41,4 +41,125 @@ Tal como en el ejemplo, normalmente omitiremos el uso del símbolo $\smile$ para
 
 \subsection{Consecuencias de los Axiomas}
 
+\begin{lemma}
+	Si $\xi$ es isomorfo a $\eta$, entonces $w_{i}(\xi) = w_{i}(\eta)$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
 
+\begin{lemma}
+	Si $\varepsilon$ es un fibrado vectorial trivial, entonces $w_{i}(\varepsilon) = 0$ para $i > 0$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+\begin{lemma}
+	Si $\varepsilon$ es trivial, entonces $w_{i}(\varepsilon \oplus \eta) = w_{i}(\eta)$.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+\begin{lemma}
+	Si $\xi$ es un fibrado de $n$-planos con una métrica Euclidiana que posee una sección cruzada no nula, entonces $w_{n}(\xi) = 0$. Aún más, si $\xi$ posee $k$ secciones cruzadas linealmente independientes, entonces
+	\[ w_{n-k+1}(\xi) = w_{n-k+2}(\xi) = \cdots = w_{n}(\xi) = 0. \]
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Un caso particular del axioma 3 que es interesante revisar es cuando la suma de Whitney $\xi \oplus \eta$ es trivial. Por el lemma 5.2, se cumplen las siguientes relaciones
+\begin{align*}
+	& w_{1}(\xi) + w_{1}(\eta) = 0 \\
+	& w_{2}(\xi) + w_{1}(\xi) w_{1}(\eta) + w_{2}(\eta) = 0 \\
+	& w_{3}(\xi) + w_{2}(\xi) w_{1}(\eta) + w_{1}(\xi) w_{2}(\eta) + w_{3}(\eta) = 0 \\
+	& \vdots
+\end{align*}
+De esta manera, obtenemos una manera inductiva de expresar $w_{i}(\eta)$ en términos de las clases de Stiefel-Whitney de $\xi$. Es decir, si conocemos las clases de $\xi$, es fácil calcular las clases de $\eta$ en este caso. \par
+
+Ahora, introducimos un formalismo que será clave para argumentar ciertas cosas en lo que procede.
+
+\begin{definition}
+	$H^{\Pi}(B; \Z \slash 2\Z)$ denotará el anillo que consiste de todas las series formales infinitas
+	\[ a = a_{0} + a_{1} + a_{2} + \cdots \]
+	donde $a_{i} \in H^{i}(B; \Z \slash 2\Z)$. El producto en este anillo está dado por la fórmula
+	\begin{align*}
+		& (a_{0} + a_{1} + a_{2} + \cdots)(b_{0} + b_{1} + b_{2} + \cdots) \\
+		& \quad = (a_{0}b_{0}) + (a_{1}b_{0} + a_{0}b_{1}) + (a_{2}b_{0} + a_{1}b_{1} + a_{0}b_{2}) + \cdots. \\
+	\end{align*}
+	Este producto es conmutativo, puesto que estamos trabajando mod $2$, y es asociativo. Aditivamente, $H^{\Pi}(B; \Z \slash 2\Z)$ se comporta como el producto cartesiano de los grupos $H^{i}(B; \Z \slash 2\Z)$.
+\end{definition}
+
+\begin{definition}
+	La \textbf{clase total de Stiefel-Whitney} de un fibrado de $n$ planos $\xi$ sobre $B$ se define por el elemento 
+	\[ w(\xi) = 1 + w_{1}(\xi) + w_{2}(\xi) + \cdots + w_{n}(\xi) + 0 + \cdots \]
+	en $H^{\Pi}(B; \Z \slash 2\Z)$.
+\end{definition}
+
+Notemos entonces que, el producto de Whitney (axioma 3), ahora puede ser expresado por la fórmula
+\[ w(\xi \oplus \eta) = w(\xi) w(\eta). \]
+Es claro que esta igualdad nos está diciendo que en cada grado del anillo de cohomología, los elementos coinciden, pues estamos trabajando con sumas formales.
+
+\begin{lemma}
+	La colección de todas las series infinitas
+	\[ w = 1 + w_{1} + w_{2} + \cdots \in H^{\Pi}(B; \Z \slash 2\Z) \]
+	forma un grupo conmutativo con la multiplicación.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Ahora, consideremos dos fibrados vectoriales $\xi$ y $\eta$ sobre el mismo espacio base. Ya establecimos que podemos escribir
+\[ w(\xi \oplus \eta) = w(\xi)w(\eta), \]
+y gracias al lemma anterior, podemos reescribir esto de la siguiente forma
+\[ w(\eta) = \overline{w}(\xi) w(\xi \oplus \eta). \]
+En particular, si la suma de Whitney es trivial, entonces
+\[ w(\eta) = \overline{w}(\xi). \]
+Esto implica un caso especial de suma importancia.
+
+\begin{theorem}[Dualidad de Whitney]
+	Si $\tau_{M}$ es el fibrado tangente de una variedad $M$ dentro de un espacio euclídeo y $\nu$ es el fibrado normal asociado, entonces
+	\[ w_{i}(\nu) = \overline{w}_{i}(\tau_{M}). \]
+\end{theorem}
+
+Con estas herramientas, buscamos calcular las clases de Stiefel-Whitney en algunos casos especiales. Además, con frecuencia utilizaremos la abreviación $w(M)$ para la clase total de Stiefel-Whitney del fibrado tangente $\tau_{M}$.
+
+\begin{example}
+	La clase total de Stiefel-Whitney del fibrado tangente de la esfera unitaria $S^{n}$ es igual a $1$. Esto nos dice que el fibrado tangente de $S^{n}$ y el fibrado trivial sobre $S^{n}$ no puede ser distinguido mediante clases de Stiefel-Whitney.
+\end{example}
+\begin{proof}
+	...
+\end{proof}
+
+Durante el resto de esta sección nos centraremos principalmente en los fibrados asociados a los espacios proyectivos $\P^{n}$. Recordemos, de la sección anterior, que el grupo $H^{i}(\P^{n}; \Z \slash 2\Z)$ es el grupo cíclico de orden $2$ para $0 \leq i \leq n$ y es cero para valores mayores de $i$. Aún más, si $a$ denota el elemento no nulo de $H^{1}(\P^{n}; \Z \slash 2\Z)$, entonces el anillo de cohomología de $\P^{n}$ está dado por
+\[ H^{*}(\P^{n}; \Z \slash 2\Z) \cong (\Z \slash 2\Z) \slash (a^{n+1}). \]
+
+% Mencionar que el mapa f^{*} \colon H^{n}(\P^{n}, \Z \slash 2\Z) \to H^{n}(S^{n}, \Z \slash 2\Z) cumple que f^{*}(a^{n}) = (f^{*}a)^{n}, aunque esto es algo que quiero mencionar en la sección de cohomología, cuando mencione el lemma que relaciona el producto cup con los mapas inducidos.
+
+\begin{example}
+	La clase total de Stiefel-Whitney del fibrado tautológico $\gamma_{n}^{1}$ sobre $\P^{n}$ está dado por
+	\[ w(\gamma_{n}^{1}) = 1 + a. \]
+\end{example}
+\begin{proof}
+	...
+\end{proof}
+
+\begin{example}
+	Por definición, el fibrado tautológico $\gamma_{n}^{1}$ sobre $\P^{n}$ está contenido como sub-fibrado en el fibrado trivial $\varepsilon^{n+1}$. Luego, sea $\gamma^{\perp}$ el complemento ortogonal de $\gamma_{n}^{1}$ en $\varepsilon^{n+1}$. Entonces,
+	\[ w(\gamma^{\perp}) = 1 + a + a^{2} + \cdots + a^{n}. \]
+\end{example}
+\begin{proof}
+	...
+\end{proof}
+
+Utilizando algunas de las propiedades que hemos enunciado hasta este momento, somos capaces de calcular $w(\P^{n})$.
+
+\begin{theorem}
+	La suma de Whitney $\tau \oplus \varepsilon^{1}$ es isomorfo a la suma de Whitney de $n+1$ fibrados canónicos, $\gamma_{n}^{1} \oplus \cdots \oplus \gamma_{n}^{1}$. Luego, la clase total de Stiefel-Whitney de $\P^{n}$ está dada por
+	\[ w(\P^{n}) = 1 + \binom{n+1}{1} a + \binom{n+1}{2} a^{2} + \cdots \binom{n+1}{n} a^{n}. \]
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}

@@ -100,7 +100,7 @@ Ahora, introducimos un formalismo que será clave para argumentar ciertas cosas 
 
 Notemos entonces que, el producto de Whitney (axioma 3), ahora puede ser expresado por la fórmula
 \[ w(\xi \oplus \eta) = w(\xi) w(\eta). \]
-Es claro que esta igualdad nos está diciendo que en cada grado del anillo de cohomología, los elementos coinciden, pues estamos trabajando con sumas formales.
+Es claro que esta igualdad nos está diciendo que los elementos coinciden en cada grado del anillo de cohomología, dado que estamos trabajando con sumas formales.
 
 \begin{lemma}
 	La colección de todas las series infinitas
@@ -119,7 +119,7 @@ En particular, si la suma de Whitney es trivial, entonces
 \[ w(\eta) = \overline{w}(\xi). \]
 Esto implica un caso especial de suma importancia.
 
-\begin{theorem}[Dualidad de Whitney]
+\begin{theorem}[Dualidad de Whitney]\label{Dualidad de Whitney}
 	Si $\tau_{M}$ es el fibrado tangente de una variedad $M$ dentro de un espacio euclídeo y $\nu$ es el fibrado normal asociado, entonces
 	\[ w_{i}(\nu) = \overline{w}_{i}(\tau_{M}). \]
 \end{theorem}
@@ -156,9 +156,52 @@ Durante el resto de esta sección nos centraremos principalmente en los fibrados
 
 Utilizando algunas de las propiedades que hemos enunciado hasta este momento, somos capaces de calcular $w(\P^{n})$.
 
-\begin{theorem}
+\begin{theorem}\label{Clase del Tangente}
 	La suma de Whitney $\tau \oplus \varepsilon^{1}$ es isomorfo a la suma de Whitney de $n+1$ fibrados canónicos, $\gamma_{n}^{1} \oplus \cdots \oplus \gamma_{n}^{1}$. Luego, la clase total de Stiefel-Whitney de $\P^{n}$ está dada por
-	\[ w(\P^{n}) = 1 + \binom{n+1}{1} a + \binom{n+1}{2} a^{2} + \cdots \binom{n+1}{n} a^{n}. \]
+	\[ w(\P^{n}) = (1 + a)^{n+1} = 1 + \binom{n+1}{1} a + \binom{n+1}{2} a^{2} + \cdots \binom{n+1}{n} a^{n}. \]
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}
+
+El siguiente corolario nos da una obstrucción a la posibilidad de paralelizar el fibrado tangente de cada espacio proyectivo.
+
+\begin{corollary}
+	La clase $w(\P^{n})$ es igual a $1$ si y solo si $n+1$ es una potencia de $2$. Por lo tanto, los único espacios proyectivos que pueden ser paralelizables son $\P^{1},\P^{3},\P^{7},\P^{15},\dots$.
+\end{corollary}
+\begin{proof}
+	...
+\end{proof}
+
+He aquí una ocasión en que las clases de Stiefel-Whitney son capaces de darnos información, pero terminan no siendo completamente determinantes. En efecto, se puede ver que $\P^{1}, \P^{3}$ y $\P^{7}$ son paralelizables. En cambio, los espacios proyectivos de mayor dimensión $\P^{15},\P^{31},\dots$ no son paralelizables. \\[0.1pt]
+% esto es posible citarlo apropiadamente %
+
+Similarmente, uno podría preguntarse si $\gamma^{\perp}$ isomorfo al fibrado tangente $\tau$ de $\P^{n}$, para todo $n$. Sabemos que cuando $n = 2$ esto es cierto, pero las clases de Stiefel-Whitney terminan siendo una buena obstrucción a la pregunta. \par En efecto, notemos que en caso que sean isomorfos, dado que $\gamma_{n}^{1} \oplus \gamma^{\perp} \cong \varepsilon^{n+1}$, entonces
+\[ w(\gamma_{n}^{1} \oplus \tau) = 1. \]
+Ahora bien, también se cumple que
+\[ w(\gamma_{n}^{1} \oplus \tau) = w(\gamma_{n}^{1}) w(\tau) = (1+a)^{n+2}. \]
+Pero $(1+a)^{n+2} = 1$ si y sólo si $n+2$ es una potencia de $2$, por el mismo argumento dado en la demostración del corolario. Por lo tanto, las únicas dimensiones donde es posible que el isomorfismo en cuestión ocurra son $\P^{2},\P^{6},\P^{14},\P^{30},\dots$. \par
+
+
+\subsection{Inmersiones}
+
+Con tal de seguir ejemplificando la naturaleza de obstrucción de las clases de Stiefel-Whitney, damos una aplicación final del teorema \ref{Clase del Tangente}. Preguntémonos entonces qué espacios proyectivos pueden ser inmersos en un espacio Euclídeo de una dimensión particular. \par
+Para ello, notemos primero que si una variedad $M$ de dimensión $n$ puede ser inmersa en $\R^{n+k}$, el teorema de dualidad de Whitney (\ref{Dualidad de Whitney}) nos dice que
+\[ w_{i}(\nu) = \overline{w}_{i}(M), \]
+y esto implica que las clases de Stiefel-Whitney duales $\overline{w}_{i}(M)$ son cero para $i > k$. Es decir, para que el espacio pueda potencialmente ser inmerso en $\R^{n+k}$, se debe cumplir esta condición sobre los duales.
+
+\begin{example}
+	En el caso del espacio proyectivo $\P^{9}$, dado que
+	\[ w(\P^{9}) = (1 + a)^{10} = 1 + a^{2} + a^{4}, \]
+	entonces
+	\[ \overline{w}(\P^{9}) = 1 + a^{2} + a^{4} + a^{6}. \]
+	Es decir, si $\P^{9}$ puede ser inmerso en $\R^{n + k}$, entonces $k$ debe ser por lo menos $6$.
+\end{example}
+
+El caso más impresionante en $\P^{n}$ es cuando $n$ es una potencia de $2$, y es lo que vemos en el siguiente teorema.
+
+\begin{theorem}
+	Si $\P^{2^{r}}$ puede ser inmerso en $\R^{2^{r} + k}$, entonces $k \geq 2^{r} - 1$.
 \end{theorem}
 \begin{proof}
 	...

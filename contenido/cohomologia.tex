@@ -1,34 +1,142 @@
 \newpage
 \section{Cohomología}
 
-\cite[\S 2]{HatcherAlgTop}.
+
+Durante esta sección, introduciremos las definiciones y resultados relacionados a cohomología que más nos interesarán para la siguiente sección. Optamos por definir todo en términos de cohomología singular, puesto que permite que la exposición sea más fluida, sin tener que recurrir a mucha teoría extra para que todo haga sentido. Nos basamos principalmente en Hatcher \cite[\S 2]{HatcherAlgTop} y en Milnor-Stasheff \cite[Apéndice A.1]{ClasesCaracteristicas}. \par
+Si bien esta es nos da una ventaja expositiva, el acercamiento singular no permite hacer cálculos sobre espacios particulares de manera agradable. En su contraparte, asumiremos el isomorfismo con otras teorías de cohomología que sí permiten hacer cálculos interesantes.
+Además, durante este informe, nos importará principalmente hablar de cohomología con coeficientes en $\Z \slash 2\Z$ o en $\Z$. Por esta razón, siempre considerar que al mencionar $G$, nos estamos refiriendo en realidad a estos dos espacios. Ahora bien, esta construcción sirve para cualquier anillo $\R$ que queramos.
+
+\subsection{Cohomología Singular}
+
+\begin{definition}
+	El \textbf{$n$-simplejo estándar} es el conjunto convexo $\Delta^{n} \subset \R^{n+1}$ que consiste de todas las $(n+1)$-tuplas $(t_{0},\dots,t_{n})$ de números reales tales que
+	\[ t_{0} + t_{1} + \cdots + t_{n} = 1, \quad t_{i} \geq 0. \]
+	Un mapa continuo de $\Delta^{n}$ hacia un espacio topológico $X$ es llamado un \textbf{$n$-simplejo singular}. La $i$-ésima \textbf{cara} de un $n$-simplejo singular $\sigma \colon \Delta^{n} \to X$ es el $(n-1)$-simplejo singular
+	\[ \sigma \circ \phi_{i} \colon \Delta^{n-1} \to X, \]
+	donde los encajes lineales $\phi_{i} \colon \Delta^{n-1} \to \Delta^{n}$ están definidos por
+	\[ \phi_{i}(t_{0},\dots, t_{i-1}, t_{i+1}, \dots, t_{n}) = (t_{0}, \dots t_{i-1}, 0, t_{i+1},\dots, t_{n}). \]
+\end{definition}
 
 \begin{definition}
 	Un \textbf{complejo de cadenas} $\{ C_{\bullet}, \partial_{\bullet} \}$ es una sequencia de homomorfismos de grupos abelianos libres ($\Z$-módulos libres)
 	\[ \cdots \rightarrow C_{n+1} \xrightarrow{\partial_{n+1}} C_{n} \xrightarrow{\partial_{n}} C_{n-1} \rightarrow \cdots \rightarrow C_{1} \xrightarrow{\partial_{1}} C_{0} \rightarrow 0, \]
-	donde $\partial_{n} \partial_{n+1} = 0$ para cada $n$. A estos mapas $\partial_{i}$ los llamamos \textbf{mapas de borde}.
+	donde $\partial_{n} \partial_{n+1} = 0$ para cada $n$. A estos mapas $\partial_{i}$ los llamamos \textbf{mapas de borde}. \par
+	Con ello, el \textbf{complejo de cocadenas} $\{ C^{\bullet}, \delta^{\bullet} \}$ lo definimos mediante la dualización de un complejo de cadenas como el anterior, bajo un anillo $R$. Es decir, es una cadena de la forma
+	\[ \cdots \xleftarrow{\delta^{n+1}} C^{n+1} \xleftarrow{\delta^{n}} C^{n} \xleftarrow{\delta^{n-1}} C^{n-1} \leftarrow \cdots \leftarrow C^{1} \xleftarrow{\delta^{0}} C^{0} \leftarrow 0, \]
+	donde $C^{i} := \Hom(C_{i}, R)$ y $\delta^{i} := \partial_{i}^{*}$. Acá, es claro que $\delta^{n+1} \delta^{n} = 0$ para cada $n$, dado que ya se sabe que $\partial_{n} \partial_{n+1} = 0$. A estos mapas $\delta^{i}$ los llamamos \textbf{mapas de co-borde}.
 \end{definition}
 
-\begin{example}
-	El principal complejo de cadenas con el que trabajaremos es aquel que llamaremos el \textbf{complejo de co-cadenas}, que se obtiene al dualizar un complejo de cadenas como el anterior por un grupo abeliano $G$:
-	\[ \cdots \leftarrow C^{*}_{n+1} \xleftarrow{\delta^{n+1}} C^{*}_{n} \xleftarrow{\delta^{n}} C^{*}_{n-1} \leftarrow \cdots \leftarrow C^{*}_{1} \xleftarrow{\delta^{1}} C^{*}_{0} \leftarrow 0, \]
-	donde $C_{i}^{*} = \Hom(C_{i}, G)$ y $\delta^{n} = \partial_{n}^{*} \colon C_{n-1}^{*} \to C_{n}^{*}$. Los mapas $\partial_{i}^{*}$ son los mapas duales a los $\partial_{i}$ y los llamamos \textbf{mapas de co-borde}. Denotamos por $\{ C^{\bullet}, \delta^{\bullet} \}$ a este nuevo complejo.
-\end{example}
+\begin{definition}
+	Para cada $n \geq 0$, definimos el \textbf{grupo de cadenas singulares} $C_{n}(X; \Z)$ como el grupo abeliano libre con un generador $[\sigma]$ por cada $n$-simplejo singular $\sigma$ en $X$. Para $n < 0$, el grupo $C_{n}(X)$ es cero. Además, definimos el \textbf{mapa de borde}
+	\[ \partial_{n} \colon C_{n}(X) \to C_{n-1}(X) \]
+	por la siguiente fórmula
+	\[ \partial_{n}[\sigma] = \sum_{i=0}^{n} (-1)^{i}[\sigma \circ \phi_{i}]. \]
+	La identidad $\partial \circ \partial = 0$ es fácil de verificar. Con ello, hemos formado un complejo de cadenas $\{ C_{\bullet}(X), \partial_{\bullet} \}$ asociado al espacio $X$.
+	Luego, definimos el \textbf{$n$-ésimo grupo de homología singular} con coeficientes en $\Z$ como el cociente $\ker \partial \slash \im \partial$ en $C_{n}(X)$, sobre el complejo de cadenas
+	\[ \cdots \to C_{n+1}(X) \xrightarrow{\partial} C_{n}(X) \xrightarrow{\partial} C_{n-1}(X) \to \cdots \to C_{0}(X) \to 0. \]
+	Los elementos en $\ker \partial$ son llamados bordes y los elementos en $\im \partial$ son llamados fronteras.
+\end{definition}
 
 \begin{definition}
-	Dado un complejo de cadenas $\{ C_{\bullet},\partial_{\bullet} \}$, definimos el $i$\textbf{-ésimo grupo de homología} asociado a este complejo como
-	\[ H_{i}(C) = \frac{\ker \partial_{n}}{\im \partial_{n+1}}. \]
-	Por otro lado, si tomamos el complejo de co-cadenas asociado $\{ C^{\bullet}, \delta^{\bullet} \}$, podemos definimos el $i$\textbf{-ésimo grupo de cohomología} como la homología de este nuevo complejo; es decir,
-	\[ H^{i}(C; G) = \frac{\ker \delta^{n}}{\im \delta^{n-1}}. \]
+	El \textbf{grupo de cocadenas} $C^{n}(X;R)$ se define por $\Hom(C_{n}(X); R)$, que consiste de todos los mapas $\Z$-lineales desde $C_{n}(X)$ a $R$. El valor dado por evaluar una cadena $\gamma \in C_{n}(X)$ en una cocadena $c \in C^{n}(X;R)$ será denotado por 
+	\[ \langle c,\gamma \rangle \in \Z. \]
+	El \textbf{mapa de co-borde} $\delta \colon C^{n}(X;R) \to C^{n+1}(X;R)$ es el dual $\partial^{*}$, por lo que para una cocadena $\phi \in C^{n}(X;R)$, su co-borde $\delta \phi$ es la composición $C_{n+1}(X) \xrightarrow{\partial} C_{n}(X) \xrightarrow{\phi} \Z$. Esto significa que para un $(n+1)$-simplejo singular $\sigma \colon \Delta^{n+1} \to X$, tenemos
+	\[ \langle \delta \phi, \sigma \rangle = \langle \phi, \partial [\sigma] \rangle = \sum_{i} (-1)^{i} \langle \phi, [\sigma \circ \phi_{i}] \rangle. \]
+	Es automático que $\delta^{2} = 0$, puesto que $\partial^{2} = 0$. Luego, definimos el \textbf{$n$-ésimo grupo de cohomología singular} con coeficientes en $R$ como el cociente $\ker \delta \slash \im \delta$ en $C^{n}(X;R)$ sobre el complejo de cocadenas
+	\[ \cdots \leftarrow C^{n+1}(X;R) \xleftarrow{\delta} C^{n}(X;R) \xleftarrow{\delta} C^{n-1}(X;R) \leftarrow \cdots \leftarrow C^{0}(X;R) \leftarrow 0. \]
+	Los elementos en $\ker \delta$ son llamados \textbf{co-ciclos} y los elementos en $\im \delta$ son llamados \textbf{co-fronteras}.
 \end{definition}
 
 El siguiente teorema nos permite afirmar que $H^{n}(C;G)$ está completamente determinado por $G$ y por los grupos de homología $H_{n}(C)$.
 
 \begin{theorem}[de Coeficientes Universales]
-	Dado un complejo de cadenas $\{ C_{\bullet}, \partial_{\bullet} \}$, sus grupos de cohomología $H^{n}(C;G)$ están determinados por sequencias exactas cortas que se escinden:
-	\[ 0 \to \Ext(H_{n-1}(C), G) \to H^{n}(C; G) \xrightarrow{h} \Hom(H_{n}(C), G) \to 0. \]
+	Dado un complejo de cadenas $\{ C_{\bullet}, \partial_{\bullet} \}$, sus grupos de cohomología $H^{n}(C;\Z)$ están determinados por sequencias exactas cortas que se escinden:
+	\[ 0 \to \Ext(H_{n-1}(C), \Z) \to H^{n}(C; \Z) \xrightarrow{h} \Hom(H_{n}(C), \Z) \to 0. \]
 \end{theorem}
 
-Si bien no estamos completamente interesados en la demostración, vale la pena hacer unos comentarios sobre el mapa $h$ que se menciona en el teorema.
+No es de nuestro interés saber qué es exactamente $\Ext(H,G)$, pero las siguientes propiedades son útiles para calcular los grupos de cohomología a partir de los de homología. Acá, $H$ es un grupo finitamente generado.
+\begin{itemize}
+	\item $\Ext(H \oplus H', \Z) = \Ext(H,\Z) \oplus \Ext(H',\Z)$.
+
+	\item $\Ext(H,G) = 0$ si $H$ es libre.
+
+	\item $\Ext(\Z \slash n\Z, \Z) \cong \Z \slash n\Z$.
+\end{itemize}
+
+\subsection{Mapas Inducidos en Cohomología Singular}
+
+Sean $C_{\bullet}(X), C_{\bullet}(Y)$ complejos de cadenas asociados a los espacios $X$ e $Y$. Recordemos que un mapa continuo $f \colon X \to Y$ induce un mapa de cadenas $f_{\#} \colon C_{\bullet}(X) \to C_{\bullet}(Y)$, que sobre los generadores $\sigma \colon \Delta^{n} \to X$ se define por $f_{\#}(\sigma) = f \circ \sigma \colon \Delta^{n} \to Y$, y se extiende linealmente a todas las cadenas singulares. Este mapa inducido conmuta con los mapas de borde; es decir, $\partial(f \circ \sigma) = f_{\#}(\partial \sigma)$, por lo que desciende a un homomorfismo entre grupos de homología. \par
+Similarmente, podemos hacer esto para cohomología.
 
 \subsection{Producto Cup}
+
+Ahora, buscamos darle una estructura adicional a estos grupos. Podemos preguntarnos si es posible que, al juntar todos estos grupos, es posible encontrar una estructura de anillo. Por separado, estos grupos ya son aditivos, por lo que buscamos definir una noción de multiplicación entre ellos.
+
+\begin{definition}
+	Sea $\sigma \colon \Delta^{n+m} \to X$ un simplejo singular. La \textbf{$m$-ésima cara frontal} de $\sigma$ será la composición $\sigma \circ \alpha_{m} \colon \Delta^{M} \to X$, donde
+	\[ \alpha_{m}(t_{0},\dots,t_{m}) = (t_{0},\dots,t_{m}, 0, \dots, 0). \]
+	Similarmente, la \textbf{$n$-ésima cara trasera} de $\sigma$ será la composición $\sigma \circ \beta_{n} \colon \Delta^{n} \to X$, donde
+	\[ \beta_{n}(t_{m}, \dots, t_{m+n}) = (0,\dots,0,t_{m},\dots,t_{m+n}). \]
+\end{definition}
+
+En primer lugar, definiremos una operación a nivel de co-cadenas. Luego veremos que en realidad desciende a cohomología.
+
+\begin{definition}
+	Podemos definir una operación
+	\[ C^{p}(X;R) \times C^{q}(X;R) \xrightarrow{\smile} C^{p+q}(X;R) \]
+	bajo la siguiente fórmula
+	\[ \langle \varphi \smile \psi, [\sigma] \rangle = \langle \varphi, [\sigma \circ \alpha_{p}] \rangle \cdot \langle \psi, [\sigma \circ \beta_{q}] \rangle. \]
+	Notar que la fórmula determina sus valores en $R$, por lo que generalmente escribiremos $\varphi \smile \psi$ que efectivamente representará un elemento en $\C^{p+q}(X;R)$. Esta operación será llamada \textbf{producto cup} (en cocadenas).
+\end{definition}
+
+\begin{lemma}
+	Este producto es bilineal y asociativo. Además, la cocadena $z^{0}$, que asigna el valor $1 \in R$ a cada $0$-simplejo singular.
+\end{lemma}
+\begin{proof}
+	...
+\end{proof}
+
+Para ver que este producto en cocadenas induce un producto en cohomología, necesitamos la siguiente fórmula.
+
+\begin{lemma}
+	Para $c \in C^{p}(X;R)$ y $c' \in C^{q}(X;R)$, se cumple
+	\[ \delta(c \smile c') = (\delta c) \smile c' + (-1)^{m} c \smile (\delta c'). \]
+\end{lemma}
+\begin{proof}
+	Para $\sigma \colon \Delta^{p+q+1} \to X$, tenemos
+	\begin{align*}
+		\langle \delta c \smile c', \sigma \rangle &= \sum_{i=0}^{p + 1} (-1)^{i} \langle c, \sigma \circ \alpha_{p} \circ \phi_{i} \rangle \cdot \langle c' \circ \beta_{q}, \sigma \rangle \\
+		(-1)^{p} \langle c \smile \delta c', \sigma \rangle &= (-1)^{p} \sum_{i=p}^{p+q+1} (-1)^{i-p} \langle c, \sigma \circ \alpha_{p} \rangle \cdot \langle c', \sigma \circ \beta_{q} \circ \phi_{i} \rangle
+	\end{align*}
+	Al sumar ambas expresiones, debemos notar que el último término de la primera igualdad y el primer término de la segunda igualdad se anulan entre sí. De esta manera, quedamos con que
+	\begin{align*}
+		\langle \delta c \smile c', \sigma \rangle + (-1)^{p}\langle c \smile \delta c', \sigma \rangle &= \sum_{i=0}^{p} (-1)^{i} \langle c, \sigma \circ \alpha_{p} \circ \phi_{i} \rangle \cdot \langle c', \sigma \circ \beta_{q} \rangle \\
+		&\quad + \sum_{i=p+1}^{p+q+1} (-1)^{i} \langle c, \sigma \circ \alpha_{p} \rangle \cdot \langle c', \sigma \circ \beta_{q} \circ \phi_{i} \rangle
+	\end{align*}
+	Pero esto último no es más que la fórmula para $\langle c \smile c', \partial \sigma \rangle$.
+\end{proof}
+
+\begin{theorem}
+	El producto cup en cocadenas induce una operación
+	\[ H^{p}(X;R) \times H^{q}(X;R) \xrightarrow{\smile} H^{p+q}(X;R) \]
+	que es bilineal y asociativa. La clase de cohomología $[z^{0}]$ actúa como un elemento unidad.
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}
+
+\begin{theorem}
+	Si $h \colon X \to Y$ es un mapa continuo, entonces $h^{*}$ preserva el producto cup; es decir,
+	\[ h^{*}(c \smile c') = h^{*}(c) \smile h^{*}(c'). \]
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}
+
+Con ello, tenemos lo necesario para describir la estructura de anillo de los grupos de cohomología.
+
+\begin{definition}
+	Sea $H^{*}(X;R)$ la suma directa de los grupos de cohomología, $\bigoplus H^{i}(X;R)$. El producto cup hace que este grupo sea un anillo graduado con unidad. Lo llamamos el \textbf{anillo de cohomología} de $X$ con coeficientes en $R$.
+\end{definition}
+
+Además, podemos notar que con el teorema anterior, es claro que los mapas continuos inducen homomorfismos de anillos. Junto con esto, una equivalencia homotópica induce un isomorfismo de anillos. Es decir, el anillo de cohomología es un invariante topológico.

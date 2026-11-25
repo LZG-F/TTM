@@ -52,6 +52,8 @@ Dado que solo nos interesarán las cartas $C^{\infty}$-compatibles, nos referire
 	Una \textbf{variedad diferenciable} es una variedad topológica $M$ junto con un atlas maximal. Llamamos a este atlas maximal una \textbf{estructura diferenciable} en $M$.
 \end{definition}
 
+De aquí en adelante, por variedad nos referiremos a variedad diferenciable. \par
+
 Gracias al próximo lemma, bastará con encontrar un atlas no necesariamente maximal para asegurarnos que nuestra variedad posee una estructura diferenciable.
 
 \begin{lemma}
@@ -87,7 +89,7 @@ Gracias al próximo lemma, bastará con encontrar un atlas no necesariamente max
 
 En efecto, podemos describir su atlas de la siguiente manera.
 
-\begin{lemma}
+\begin{lemma}\label{Producto de Variedades}
 	Si $\{ (U_{\alpha}, \phi_{\alpha}) \}$ y $\{ (V_{i}, \psi_{i}) \}$ son los atlas $C^{\infty}$ de las variedades $M$ y $N$ de dimensiones $m$ y $n$, respectivamente, entonces la colección
 	\[ \{ (U_{\alpha} \times V_{i}, \phi_{\alpha} \times \psi_{i} \colon U_{\alpha} \times V_{i} \to \R^{m} \times \R^{n}) \} \]
 	de cartas es un atlas para $M \times N$. Por lo tanto, $M \times N$ es una variedad diferenciable de dimensión $m + n$.
@@ -128,6 +130,71 @@ Si bien sus demostraciones no son de nuestro interés, de esta manera, cuando de
 
 \subsection{Mapas entre variedades}
 
+\begin{definition}
+	Sean $N$ y $M$ variedades de dimensión $n$ y $m$, respectivamente. Un mapa continuo $F \colon N \to M$ es \textbf{$C^{\infty}$ en un punto $p \in N$} si existe una carta $(V,\psi)$ de $F(p) \in M$ y una carta $(U,\phi)$ de $p \in N$ tales que 
+	\[ \psi \circ F \circ \psi^{-1} \colon \phi(F^{-1}(V) \cap U) \to \R^{m}, \]
+	donde $\phi(F^{-1}(V) \cap U) \subset \R^{n}$, es $C^{\infty}$ en $\phi(p)$. Decimos que $F \colon N \to M$ es $C^{\infty}$ si es $C^{\infty}$ en cada punto de $N$.
+\end{definition}
+
+Por supuesto, algo importante a mencionar respecto a este tipo de mapas es lo siguiente.
+
+\begin{lemma}
+	Si $F \colon N \to M$ y $G \colon M \to P$ son $C^{\infty}$, entonces la composición $G \circ F \colon N \to P$ es $C^{\infty}$.
+\end{lemma}
+
+Notemos que un caso particular de la definición, es cuando $M = \R$; es decir, $F$ es una función a valores reales. En tal caso, es claro que solo requerimos de la existencia de una carta $(U, \phi)$ de un punto $p \in N$, tal que $F \circ \phi^{-1} \colon \phi(U) \to \R$ es $C^{\infty}$ en $\phi(p)$.
+
+\begin{example}[Mapas de proyección]
+	Sean $M$ y $N$ variedades de dimensión $m$ y $n$, respectivamente, y sea $\pi \colon M \times N \to M$, donde $\pi(p,q) = p$ es la proyección sobre el primer factor. Veamos que es un mapa suave. Sea $(p,q) \in M \times N$ un punto arbitrario. Supongamos que $(U,\phi) = (U,x^{1},\dots,x^{m})$ y $(V,\psi) = (V,y^{1},\dots,y^{n})$ son cartas coordenadas de los puntos $p \in M$ y $q \in N$, respectivamente. Como ya se mencionó en el lemma \ref{Producto de Variedades}, $(U \times V, \phi \times \psi) = (U \times V, x^{1},\dots,x^{m},y^{1},\dots,y^{n})$ es una carta coordenada del punto $(p,q)$. Entonces
+	\[ (\phi \circ \pi \circ (\phi \times \psi)^{-1})(a^{1},\dots,a^{m},b^{1},\dots,b^{n}) = (a^{1},\dots,a^{m}), \]
+	que es un mapa $C^{\infty}$ desde $(\phi \times \psi)(U \times V) \subset \R^{m+n}$ hacia $\phi(U) \subset \R^{m}$. Es decir, $\pi$ es $C^{\infty}$ en $(p,q)$, pero como era un punto arbitrario, podemos concluir que $\pi$ es $C^{\infty}$.
+\end{example}
+
+\begin{example}[Derivadas parciales de una función $C^{\infty}$]
+	En una variedad $M$ de dimensión $n$, sea $(U,\phi)$ una carta y $f \colon M \to \R$ una función $C^{\infty}$. Como función hacia $\R^{n}$, podemos describir $\phi$ según sus $n$ componentes $x^{1},\dots,x^{n}$. Es decir, si $r^{1},\dots,r^{n}$ son las coordenadas estándar en $\R^{n}$, entonces $x^{i} = r^{i} \circ \phi$. Para $p \in U$, definimos la \textbf{derivada parcial $\partial f \slash \partial x^{i}$ de $f$ con respecto a $x^{i}$ en $p$} de la forma
+	\[ \frac{\partial}{\partial x^{i}} \bigg|_{p} f := \frac{\partial f}{\partial x^{i}}(p) := \frac{\partial (f \circ \phi^{-1})}{\partial r^{i}} (\phi(p)) := \frac{\partial}{\partial r^{i}} \bigg|_{\phi(p)} (f \circ \phi^{-1}). \]
+	Luego, como funciones en $\phi(U)$, tenemos que
+	\[ \frac{\partial f}{\partial x^{i}} \circ \phi^{-1} = \frac{\partial (f \circ \phi^{-1})}{\partial r^{i}}. \]
+	La derivada parcial $\partial f \slash \partial x^{i}$ es $C^{\infty}$ en $U$ puesto que $(\partial f \slash \partial x^{i}) \circ \phi^{-1}$ es $C^{\infty}$ en $\phi(U)$.
+\end{example}
+
+Veamos entonces dos cosas importantes relacionadas a las derivada parciales.
+
+\begin{proposition}
+	Supongamos que $(U,x^{1},\dots,x^{n})$ es una carta en una variedad. Entonces $\partial x^{i} \slash \partial x^{j} = \delta_{j}^{i}$.
+\end{proposition}
+\begin{proof}
+	En un punto $p \in U$, por definición de $\partial \slash \partial x^{j} \big|_{p}$ y de $x^{i}$, tenemos que
+	\[ \frac{\partial x^{i}}{\partial x^{j}} (p) = \frac{\partial (x^{i} \circ \phi^{-1})}{\partial r^{j}} (\phi(p)) = \frac{\partial (r^{i} \circ \phi \circ \phi^{-1})}{\partial r^{j}}(\phi(p)) = \frac{\partial r^{i}}{\partial r^{j}} (\phi(p)) = \delta_{j}^{i}. \]
+\end{proof}
+
+\begin{definition}
+	Sean $N$ y $M$ variedades. Decimos que un mapa continuo $F \colon N \to M$ es un difeomorfismo si es biyectivo, $C^{\infty}$ y tal que su inversa $F^{-1}$ es $C^{\infty}$.
+\end{definition}
+
+\begin{proposition}
+	Si $(U,\phi)$ es una carta en una variedad $M$ de dimensión $n$, entonces su mapa coordenado $\phi \colon U \to \phi(U) \subset \R^{n}$ es un difeomorfismo.
+\end{proposition}
+\begin{proof}
+	Por definición, $\phi$ es un homeomorfismo, por lo que nos queda demostrar que es $C^{\infty}$ y que su inversa es $C^{\infty}$. Para ello, utilizamos el atlas $\{ (U,\phi) \}$ con una sola carta en $U$ y el atlas $\{ (\phi(U), \mathds{1}_{\phi(U)}) \}$ con una sola carta en $\phi(U)$. Dado que $\mathds{1}_{\phi(U)} \circ \phi \circ \phi^{-1} \colon \phi(U) \to \phi(U)$ es la identidad, es $C^{\infty}$, y como la carta sirve para todo punto en $U$, es claro que $\phi$ es $C^{\infty}$. \par
+	Para ver que $\phi^{-1} \colon \phi(U) \to U$ es $C^{\infty}$, consideramos las mismas cartas. Dado que $\phi \circ \phi^{-1} \circ \mathds{1}_{\phi(U)} = \mathds{1}_{\phi(U)} \colon \phi(U) \to \phi(U)$, por el mismo argumento anterior, tenemos que $\phi^{-1}$ es $C^{\infty}$.
+\end{proof}
+
+\begin{definition}
+	Sea $F \colon N \to M$ un mapa $C^{\infty}$ y sean $(U, \phi) = (U, x^{1},\dots,x^{n})$ y $(V, \psi) = (V, y^{1},\dots,y^{m})$ cartas en $N$ y $M$, respectivamente, tales que $F(U) \subset V$. Denotamos por
+	\[ F^{i} := y^{i} \circ F = r^{i} \circ \psi \circ F \colon U \to \R \]
+	la $i$-ésima componente de $F$ en la carta $(V,\psi)$. Luego, la matriz $[\partial F^{i} \slash \partial x^{j}]$ es llamada la \textbf{matriz Jacobiana} de $F$, relativa a las cartas $(U,\phi)$ y $(V,\psi)$.
+\end{definition}
+
+\begin{example}[Matrix Jacobiana de un mapa de transición]
+	Sean $(U,\phi) = (U,x^{1},\dots,x^{n})$ y $(V,\psi) = (V,y^{1},\dots,y^{n})$ cartas de una variedad $M$ que coinciden en algún abierto no vacío. El mapa de transición $\psi \circ \phi^{-1} \colon \phi(U \cap V) \to \psi(U \cap V)$ es un difeomorfismo de conjuntos abiertos en $\R^{n}$. La matriz Jacobiana de $\psi \circ \phi^{-1}$ en el punto $\phi(p)$ es la matriz $[\partial y^{i} \slash \partial x^{j}]$.
+\end{example}
+\begin{proof}
+	Por definición, la matriz Jacobiana de $\psi \circ \phi^{-1}$ está dada por la matriz $[\partial (\psi \circ \phi^{-1})^{i} \slash \partial r^{j}]$. Ahora bien,
+	\[ \frac{\partial (\psi \circ \phi^{-1})^{i}}{\partial r^{j}}(\phi(p)) = \frac{\partial (r^{i} \circ \psi \circ \phi^{-1})}{\partial r^{j}} (\phi(p)) = \frac{\partial (y^{i} \circ \phi^{-1})}{\partial r^{j}} (\phi(p)) = \frac{\partial y^{i}}{\partial x^{j}}(p). \]
+\end{proof}
+
+
 % Estas dos subsecciones que siguen quizá tengan que ir en otra sección aparte.
 \subsection{El Espacio Tangente}
 
@@ -147,5 +214,11 @@ La adición y multiplicación de funciones hacen de $C_{p}^{\infty}(M)$ en un an
 \begin{definition}
 	Un \textbf{vector tangente} en $p$ en una variedad $M$ es una derivación en $p$. Con ello, los vectores tangentes en un punto $p$ forman un espacio vectorial $T_{p}M$, llamado el \textbf{espacio tangente} de $M$ en $p$.
 \end{definition}
+
+\begin{example}
+	Definimos las derivadas parciales sobre una carta coordenada $(U,\phi) = (U,x^{1},\dots,x^{n})$ de un punto $p \in M$, de tal manera que para una función $f$ a valores reales, que es $C^{\infty}$ en una vecindad de $p$, su derivada parcial está dada por
+	\[ \frac{\partial}{\partial x^{i}} \bigg|_{p} f = \frac{\partial}{\partial r^{i}} \bigg|_{\phi(p)} (f \circ \phi^{-1}). \]
+	De esta manera, es posible comprobar que $\partial \slash \partial x^{i} \big|_{p} \colon C_{p}^{\infty} \to \R$, satisface la propiedad de derivación, por lo que es un vector tangente en $p$.
+\end{example}
 
 \subsection{Inmersión vs Encaje}

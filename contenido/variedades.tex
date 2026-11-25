@@ -14,9 +14,15 @@
 
 Notemos que para que la dimensión esté bien definida, necesitamos que para $n \neq m$, un abierto de $\R^{n}$ no es homeomorfo a un abierto de $\R^{m}$. Esto es llamado \textit{invarianza de dimensión} y, efectivamente, se cumple, pero no será algo que apuntaremos a demostrar en este texto.
 
-\subsection{Funciones Suaves}
+\subsection{Variedades Diferenciables}
 
-\subsection{Compatibilidad de Cartas}
+Sean $x^{1},\dots,x^{n}$ las coordenadas de $\R^{n}$ y sea $p = (p^{1},\dots,p^{n})$ un punto en un abierto $U$ de $\R^{n}$.
+
+\begin{definition}
+	Sea $k$ un entero no negativo. Una función a valores reales $f \colon U \to \R$ se dice $C^{k}$ en $p \in U$ si sus derivadas parciales
+	\[ \frac{\partial^{i} f}{\partial x^{i_{1}}\cdots \partial x^{i_{j}}} \]
+	de todos los ordenes $j \leq k$ existen y son continuas en $p$. Una función $f \colon U \to \R$ es $C^{\infty}$ en $p$ si es $C^{k}$ para todo $k \geq 0$; es decir, si sus derivadas parciales de todo orden existen y son continuas en $p$. Una función a valores vectoriales $f \colon U \to \R^{m}$ se dice $C^{k}$ en $p$ si todas sus funciones componentes $f^{1},\dots,f^{m}$ son $C^{k}$ en $p$. Decimos que $f \colon U \to \R^{m}$ es $C^{k}$ en $U$ si es $C^{k}$ en cada punto de $U$. Las nociones de $C^{\infty}$ para estas últimas definiciones son similares a la anteriormente descrita.
+\end{definition}
 
 \begin{definition}
 	Decimos que dos cartas $(U,\phi)$ y $(V, \psi)$ de una variedad topológica son $C^{\infty}$\textbf{-compatibles} si los dos mapas
@@ -30,7 +36,6 @@ Dado que solo nos interesarán las cartas $C^{\infty}$-compatibles, nos referire
 	Un \textbf{atlas} ($C^{\infty}$) en un espacio localmente Euclídeo $M$ es una colección $\mathfrak{U} = \{ (U_{\alpha}, \phi_{\alpha}) \}$ de cartas compatibles a pares tales que cubren $M$; i.e., tales que $M = \bigcup_{\alpha} U_{\alpha}$.
 \end{definition}
 
-% Estoy dudando en si debo poner esta definicion y lema que vinenen a continuacion.
 \begin{definition}
 	Decimos que una carta $(V, \psi)$ es \textbf{compatible con un atlas} $\{ (U_{\alpha}, \phi_{\alpha}) \}$ si es compatible con cada una de las cartas $(U_{\alpha}, \phi_{\alpha})$ en el atlas.
 \end{definition}
@@ -38,8 +43,6 @@ Dado que solo nos interesarán las cartas $C^{\infty}$-compatibles, nos referire
 \begin{lemma}
 	Sea $\{ (U_{\alpha}, \phi_{\alpha}) \}$ un atlas en un espacio localmente Euclídeo. Si dos cartas $(V, \psi)$ y $(W, \sigma)$ son compatibles con el atlas $\{ (U_{\alpha}, \phi_{\alpha}) \}$, entonces son compatibles entre sí.
 \end{lemma}
-
-\subsection{Variedades Diferenciables}
 
 \begin{definition}
 	Decimos que un atlas $\mathfrak{M}$ en un espacio localmente Euclídeo es \textbf{maximal} si no está contenido en un atlas más grande. Dicho de otra forma, si $\mathfrak{U}$ es cualquier otro atlas conteniendo a $\mathfrak{M}$, entonces $\mathfrak{U} = \mathfrak{M}$.
@@ -55,13 +58,94 @@ Gracias al próximo lemma, bastará con encontrar un atlas no necesariamente max
 	Cualquier atlas $\mathfrak{U}$ en un espacio localmente Euclídeo está contenido en un único atlas maximal.
 \end{lemma}
 
-\subsection{El Espacio Proyectivo}
-% Construir el espacio proyectivo mediante puntos antipodales en la esfera.
-% Mostrar que el mapa de proyección es abierto.
-% Mostrar que es variedad topológica (brevemente).
-% Construir su estructura diferenciable.
+\begin{example}[Espacio euclidiano]
+	El espacio euclidiano $\R^{n}$ es una variedad diferenciable con la carta $(\R^{n}, r^{1},\dots,r^{n})$, donde $r^{1},\dots,r^{n}$ son las coordenadas estándar en $\R^{n}$.
+\end{example}
+
+\begin{example}[Subconjunto abierto de una variedad]
+	Cualquier subconjunto abierto $V$ de una variedad diferenciable $M$ es también una variedad diferenciable. En efecto, si $\{ (U_{\alpha},\phi_{\alpha}) \}$ es un atlas de $M$, entonces $\{ (U_{\alpha} \cap V, \phi_{\alpha}|_{U_{\alpha} \cap V} \}$ es un atlas para $V$, donde $\phi_{\alpha}|_{U_{\alpha} \cap V} \colon U_{\alpha} \cap V \to \R^{n}$ denota la restricción de $\phi_{\alpha}$ al conjunto $U_{\alpha} \cap V$.
+\end{example}
+
+\begin{example}[Círculo unitario en el plano real]
+	Vemos $S^{1}$ como el círculo unitario en $R^{2}$, vía la ecucación $x^{2} + y^{2} = 1$. Podemos cubrir el círculo con cuatro abiertos: dos semicírculos, superior e inferior, denotados por $U_{1},U_{2}$ respectivamente, y otros dos semicírculos, derecho e izquierdo, denotados por $U_{3},U_{4}$ respectivamente. Cada uno de ellos los tomamos sin los puntos finales pertenecientes al eje $x$ e $y$, respectivamente. De esta manera, los mapas
+	\[ \phi_{i} \colon U_{i} \to (-1,1), \]
+	donde $\phi_{i}(x,y) = x$ para $i=1,2$, y $\phi_{i}(x,y) = y$ para $i=3,4$, son homeomorfismos.
+	Ahora, notar que en $U_{1} \cap U_{3}$,
+	\[ (\phi_{3} \circ \phi_{1}^{-1})(x) = \phi_{3}\left(x, \sqrt{1 - x^{2}}\right) = \sqrt{1 - x^{2}}, \]
+	es $C^{\infty}$. Similarmente, en $U_{2} \cap U_{4}$,
+	\[ (\phi_{4} \circ \phi_{2}^{-1})(x) = \phi_{4}\left(x, -\sqrt{1-x^{2}}\right) = -\sqrt{1-x^{2}}, \]
+	es $C^{\infty}$. Esto es similar para todos los otros abiertos, por lo que podemos concluir que $\{ (U_{i}, \phi_{i}) \}_{i=1}^{4}$ es un atlas $C^{\infty}$ en $S^{1}$.
+\end{example}
+
+\begin{example}[$n$-esfera unitaria]
+	La esfera unitaria $S^{n}$ en $\R^{n+1}$ es una variedad diferenciable.
+\end{example}
+
+\begin{example}[Producto de variedades]
+	Si $M$ y $N$ son variedades diferenciables, entonces $M \times N$, con su topología producto, también lo es.
+\end{example}
+
+En efecto, podemos describir su atlas de la siguiente manera.
+
+\begin{lemma}
+	Si $\{ (U_{\alpha}, \phi_{\alpha}) \}$ y $\{ (V_{i}, \psi_{i}) \}$ son los atlas $C^{\infty}$ de las variedades $M$ y $N$ de dimensiones $m$ y $n$, respectivamente, entonces la colección
+	\[ \{ (U_{\alpha} \times V_{i}, \phi_{\alpha} \times \psi_{i} \colon U_{\alpha} \times V_{i} \to \R^{m} \times \R^{n}) \} \]
+	de cartas es un atlas para $M \times N$. Por lo tanto, $M \times N$ es una variedad diferenciable de dimensión $m + n$.
+\end{lemma}
+
+\begin{example}
+	Del lema anterior se sigue que tanto el cilindro infinito $S^{1} \times \R$ como el toro $S^{1} \times S^{1}$ son variedades diferenciables.
+\end{example}
+
+\subsection{El Espacio Proyectivo Real}
+
+Ahora, buscamos describir y darle una estructura diferenciable al espacio que nos será de mayor atractivo en lo que respecta a este informe; es decir, el espacio proyectivo real $\R P^{n}$. Para ello, definimos una relación sobre $\R^{n+1} - \{ 0 \}$ por
+\[ x \sim y \iff y = tx \text{ para algún } t \in \R - \{ 0 \}, \]
+donde $x,y \in \R^{n+1} - \{ 0 \}$. El espacio proyectivo $\R P^{n}$ se define como el cociente de $\R^{n+1} - \{ 0 \}$ por la relación de equivalencia recién descrita. Es decir, estamos cocientando las lineas que pasan por el orígen en el espacio euclidiano $n$-dimensional, o dicho de otra forma, el espacio proyectivo es aquel donde los puntos son rectas en el espacio euclidiano. \par
+Denotamos una clase de equivalencia de un punto $(a^{0},\dots,a^{n}) \in \R^{n+1} - \{ 0 \}$ por $[a^{0},\dots,a^{n}]$ y denotamos el mapa cociente por $\pi \colon \R^{n+1} \to \R P^{n}$. Llamamos a $[a^{0},\dots,a^{n}]$ las \textbf{coordenadas homogéneas} en $\R P^{n}$. \par
+Otra manera de construir este espacio es a través de la esfera. En efecto, si notamos que dos puntos antipodales en la esfera $S^{n}$ determinan una única recta por el orígen en $\R^{n}$, se sugiere que podemos describir el espacio proyectivo mediante el cociente de puntos antipodales en la esfera. En efecto, si definimos una relación en $S^{n}$ por
+\[ x \sim y \iff x = \pm y, \quad x,y \in S^{n}, \]
+entonces el espacio cociente de $S^{n}$ por esta relación describe de manera equivalente al espacio proyectivo $\R P^{n}$. \par
+Cada una de estas descripciones tiene su utilidad y serán utilizadas de manera intercambiable durante este informe. \par
+Algo que se mencionó anteriormente, es que nos interesa describir una estructura diferenciable en este espacio. Antes de ello, es importante mencionar los siguientes resultados.
+
+\begin{lemma}
+	El espacio proyectivo real $\R P^{n}$ es segundo contable.
+\end{lemma}
+
+\begin{lemma}
+	El espacio proyectivo real $\R P^{n}$ es Hausdorff.
+\end{lemma}
+
+Si bien sus demostraciones no son de nuestro interés, de esta manera, cuando describamos un atlas en $\R P^{n}$, habremos demostrado que es una variedad diferenciable.
+
+\begin{proposition}
+	$\R P^{n}$ tiene una estructura diferenciable.
+\end{proposition}
+\begin{proof}
+	...
+\end{proof}
+
+\subsection{Mapas entre variedades}
 
 % Estas dos subsecciones que siguen quizá tengan que ir en otra sección aparte.
 \subsection{El Espacio Tangente}
 
-\subsection{Inmersión vs Embedding}
+\begin{definition}
+	Un \textbf{gérmen} de una función $C^{\infty}$ en $p \in M$ es una clase de equivalencia del conjunto de funciones a valores reales $C^{\infty}$ definidas en una vecindad $U$ de $p$ en $M$, donde 
+	\[ f \sim g \iff f = g \text{ en alguna vecindad } V \subset U \text{ de } p. \]
+	Notar que este abierto $V$ es posiblemente más pequeño que $U$ y debe contener a $p$. El conjunto de todos los gérmenes de funciones $C^{\infty}$ en $p \in M$ lo denotamos por $C_{p}^{\infty}(M)$.
+\end{definition}
+
+La adición y multiplicación de funciones hacen de $C_{p}^{\infty}(M)$ en un anillo.
+
+\begin{definition}
+	Una \textbf{derivación en un punto} $p$ en una variedad $M$ es un mapeo lineal $D \colon C_{p}^{\infty}(M) \to \R$ tal que
+	\[ D(fg) = (Df)g(p) + f(p) Dg. \]
+\end{definition}
+
+\begin{definition}
+	Un \textbf{vector tangente} en $p$ en una variedad $M$ es una derivación en $p$. Con ello, los vectores tangentes en un punto $p$ forman un espacio vectorial $T_{p}M$, llamado el \textbf{espacio tangente} de $M$ en $p$.
+\end{definition}
+
+\subsection{Inmersión vs Encaje}
